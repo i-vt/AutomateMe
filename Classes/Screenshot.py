@@ -2,6 +2,8 @@ import os
 import platform
 from PIL import ImageGrab
 
+# To do: create a class, add a method for saving, and continuous sequential screenshots.
+
 def capture_screens():
     # Get the number of screens
     num_screens = len(ImageGrab.grab_all())
