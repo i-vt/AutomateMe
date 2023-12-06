@@ -1,6 +1,6 @@
 # AutomateMe
 
-"AutomateMe" is focused on automating daily activities and tasks through a unique combination of user activity recording, machine learning, and optimization. Here's a detailed overview:
+"AutomateMe" is focused on automating daily activities and tasks through a unique combination of user activity recording, machine learning, and optimization.
 
 ## Description
 
