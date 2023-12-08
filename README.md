@@ -33,8 +33,9 @@ In summary, "AutomateMe" represents a sophisticated blend of activity tracking, 
 
 ### To do list
 1. Finish Sub-Classes
-2. Finish Orchestrator Assistant
-3. Create class tests
-4. Dry-run with barebones build
-5. Start working on Web UI
-6. Docker image
+2. Logging
+3. Finish Orchestrator Assistant
+4. Create class tests
+5. Dry-run with barebones build
+6. Start working on Web UI
+7. Docker image
