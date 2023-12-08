@@ -1,25 +1,28 @@
-from pynput.keyboard import Key, Listener
+import Track
+from pynput.keyboard import Listener, Key
 
-def on_press(key):
-    try:
-        # Check if the key is a special key (like space, enter, etc.)
-        if isinstance(key, Key):
-            print(f"Special key {key} pressed")
-        else:
-            # Check if the key is a special character (not a letter or digit)
-            if not key.char.isalnum():
-                print(f"Special character {key.char} pressed")
+class TrackKeyboard(Track.Track):
+    # To do: add logic for key-press/release for tracking of combination of keys ex.: CTRL + C
+    def on_keypress(self, key):
+        # print(key)
+        self.write_record(self.on_keypress.__name__, key)
+        """
+        # Not needed here, but probably could be utilized in "UseKeyboard.py"
+        try:
+            # Check if the key is a special key (like space, enter, etc.)
+            if isinstance(key, Key):
+                print(f"Special key {key}")
             else:
-                print(f"Alphanumeric key {key.char} pressed")
+                # Check if the key is a special character (not a letter or digit)
+                if not key.char.isalnum():
+                    print(f"Special character {key.char} pressed")
+                else:
+                    print(f"Alphanumeric key {key.char} pressed")
 
-    except AttributeError:
-        print(f"Special key (without char) {key} pressed")
-
-def on_release(key):
-    # Stop listener
-    if key == Key.esc:
-        return False
-
-# Collect events until released
-with Listener(on_press=on_press, on_release=on_release) as listener:
-    listener.join()
+        except AttributeError:
+            print(f"Special key (without char) {key} pressed")
+        """
+    def record(self):
+        # Create a listener that calls the on_keypress function for keyboard events
+        with Listener(on_press=self.on_keypress) as listener:
+            listener.join()
