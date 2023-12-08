@@ -12,20 +12,27 @@ class Track:
         """
         valid_output_options = ["default", "custom"]
         if output_option not in valid_output_options:  raise ValueError
-        if output_folder == "": 
-            script_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-            output_folder = os.path.join(script_dir, "Output/")
         
+        if output_folder == "": output_folder = "Output/"       
         self.output_option = output_option
-        self.output_folder = output_folder
+
 
         output_file = f"{self.__class__.__name__}_{self.now()}.{extension}"
 
+        self.output_path = self.make_local_folder_get_filepath(output_folder, output_file)
+        self.delim = delim
+
+    def make_local_folder_get_filepath(self, folder: str="", filename: str="") -> str:
+        if folder == "": folder = "UnknownFolder"
+        script_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+        output_folder = os.path.join(script_dir, folder)
+        output_file = filename
+        
         if not os.path.exists(output_folder): os.makedirs(output_folder)
 
-        self.output_path = os.path.join(output_folder, output_file)
+        if output_file != "": return os.path.join(output_folder, output_file)
+        else: return output_folder
 
-        self.delim = delim
 
     def now(self) -> str:
         """
@@ -68,3 +75,5 @@ class Track:
         if len(output) > 1: output = output[1:]
 
         self.write(output) 
+
+        
