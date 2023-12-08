@@ -1,25 +1,21 @@
-import os
-import platform
-from PIL import ImageGrab
-
 # To do: create a class, add a method for saving, and continuous sequential screenshots.
+from PIL import ImageGrab
+from screeninfo import get_monitors
 
 def capture_screens():
-    # Get the number of screens
-    num_screens = len(ImageGrab.grab_all())
+    screenshots = []
+    for m in get_monitors():
+        # The bounding box is defined by the geometry of the monitor
+        bbox = (m.x, m.y, m.x + m.width, m.y + m.height)
+        print(f"Capturing screen {m.name} at bbox: {bbox}")
+        screenshot = ImageGrab.grab(bbox=bbox)
+        screenshots.append(screenshot)
 
-    # Create a directory to store the screenshots
-    if not os.path.exists('screenshots'):
-        os.makedirs('screenshots')
+    return screenshots
 
-    for screen_idx in range(num_screens):
-        # Capture the screenshot of the current screen
-        screenshot = ImageGrab.grab(all_screens=True, screen=screen_idx)
+# Capture all screens
+all_screenshots = capture_screens()
 
-        # Save the screenshot to a file
-        filename = f'screenshot_{screen_idx + 1}.png'
-        screenshot.save(os.path.join('screenshots', filename))
-        print(f'Screenshot {screen_idx + 1} saved as {filename}')
-
-if __name__ == '__main__':
-    capture_screens()
+# Optionally, save each screenshot
+for i, screenshot in enumerate(all_screenshots):
+    screenshot.save(f"screen_{i+1}.png")
