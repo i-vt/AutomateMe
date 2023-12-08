@@ -1,5 +1,7 @@
 import os, Track, time
 from PIL import ImageGrab
+
+#Remove dependency if single screen?
 from screeninfo import get_monitors
 
 class TrackScreenshot(Track.Track):
