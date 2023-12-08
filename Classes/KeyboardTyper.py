@@ -1,6 +1,7 @@
 from pynput.keyboard import Controller
 import time, random
 
+# To do: enable easier handling of special keys
 # You can also simulate keypresses, for example, pressing and releasing the 'Enter' key:
 # keyboard = Controller()
 # keyboard.press(Key.enter)
