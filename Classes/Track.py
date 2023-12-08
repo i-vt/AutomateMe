@@ -28,6 +28,9 @@ class Track:
         self.delim = delim
 
     def now(self) -> str:
+        """
+        self.now() -> 20231208_000411_546018
+        """
         current_time = datetime.datetime.now()
         formatted_string = current_time.strftime("%Y%m%d_%H%M%S_%f")
         return formatted_string
@@ -35,16 +38,33 @@ class Track:
 
     def write(self, text):
         """
-        assuming default self.delim  "|"
-        function|args1|agrs2|...|argsn
+        Output produced, assuming default self.delim  "|":
+        20231208_000411_546018|Text passed goes here
         """
 
         with open(self.output_path, "a") as file: 
             file.write(self.now() + self.delim + str(text)+"\n")
 
+    """
+    # Dynamic function naming, commented out b/c when inherited it prints:
+    # <bound method Track.function_name of <__main__.TrackKeyboard object at 0x1232342>>
+    def function_name(self) -> str:
+        current_frame = inspect.currentframe()
+        function_name = inspect.getframeinfo(current_frame).function
+        output = str(function_name)
+        return output
+    """
+    def write_record(self, *args):
+        """
+        write_record("Text passed goes here", 1 , "AAAA")
+        Output produced, assuming default self.delim  "|":
+        20231208_000411_546018|Text passed goes here|1|AAAA
+        """
 
- 
-# Test
-# TrackMouse().record()
+        output = ""
+        for arg in args:
+            output += f"{self.delim}{arg}"
 
-#Track().write(123)
+        if len(output) > 1: output = output[1:]
+
+        self.write(output) 
