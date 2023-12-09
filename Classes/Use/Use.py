@@ -84,8 +84,6 @@ class Use:
     #Make a converter for ML + converter to second time
         
 
-#print(Use().read_file("/home/blender/Documents/updated_/Output/TrackKeyboard_20231208_004929_627262.txt"))
-
 #test = ["20231208_000411_546018","202_31208_000411_546018","2023208_0004111_546018"]
 #for i in test: print(Use.check_time_formatting(i))
 
