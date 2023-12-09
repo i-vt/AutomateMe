@@ -1,14 +1,13 @@
-from pynput.keyboard import Controller
-import time, random
+from pynput.keyboard import Controller, Key
+import time, random, Use
 
-# To do: enable easier handling of special keys
 # You can also simulate keypresses, for example, pressing and releasing the 'Enter' key:
 # keyboard = Controller()
 # keyboard.press(Key.enter)
 # keyboard.release(Key.enter)
 
 
-class KeyboardTyper:
+class UseKeyboard(Use.Use):
     def __init__(self,timing: str="random", variance: float=.25):
         """
             TIMING
@@ -67,11 +66,40 @@ class KeyboardTyper:
                 self.type_char(word[key], random.randint(interval_bottom, interval_top)/length)
             return True
         return False
+    def click_release(self, special_key):
+        # Only for special keys such as ctrl,shift,cmd(aka winkey), caps
+        self.keyboard.press(special_key)
+        self.keyboard.release(special_key)
+
+    def play_record(self, instruction_file: str="", delimiter: str = "|") -> bool:
+        """
+        filepath = "/home/computer/Documents//Output/TrackKeyboard_20231209_141013_599845.txt"
+        UseKeyboard().play_record(filepath)
+        
+        returns true if completed without issues, false if failed.
+        """
+        if instruction_file == "": return False
+        valid_list = self.read_file(instruction_file, delimiter)
+        print("bow!")
+        for command in valid_list:
+            time.sleep(command[0])
+            print(command)
+            if command[1] == "on_keypress":
+                if "'" in command[2] or '"' in command[2] : 
+                    command[2] = command[2][1:-1] 
+                    self.click_release(command[2])
+                elif "Key.ctrl" == command[2]:
+                    self.click_release(Key.ctrl)
+                elif "Key.shift" == command[2]:
+                    self.click_release(Key.shift)
+                elif "Key.caps_lock" == command[2]:
+                    self.click_release(Key.caps_lock)
+                elif "Key.cmd" == command[2]:
+                    self.click_release(Key.cmd)
+                elif "Key.esc" == command[2]:
+                    self.click_release(Key.esc)
+            else: continue
+
+        return True
 
 
-
-"""
-#Testing
-if __name__ == "__main__":
-    KeyboardTyper().type_basic("AAAaaaaAbd*", 10)
-"""
