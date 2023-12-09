@@ -4,7 +4,7 @@ from PIL import ImageGrab
 #Remove dependency if single screen?
 from screeninfo import get_monitors
 
-class TrackScreenshot(Track.Track):
+class TrackScreen(Track.Track):
 
     def capture_screens(self,folder_path, naming: str="screenshot"):
         for i, m in enumerate(get_monitors()):
