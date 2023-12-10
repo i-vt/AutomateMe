@@ -1,8 +1,8 @@
 # Define a combination of classes & functionalities for an easier pull by OchestratorMain.py
 
-from TrackKeyboard import TrackKeyboard as tk
-from TrackMouse import TrackMouse as tm
-from TrackScreen import TrackScreen as ts
+from .TrackKeyboard import TrackKeyboard as tk
+from .TrackMouse import TrackMouse as tm
+from .TrackScreen import TrackScreen as ts
 import threading
 
 class TrackHelper:
