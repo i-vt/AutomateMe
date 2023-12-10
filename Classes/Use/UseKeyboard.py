@@ -1,13 +1,10 @@
 from pynput.keyboard import Controller, Key
-import time, random, Use
+import time, random
 
-# You can also simulate keypresses, for example, pressing and releasing the 'Enter' key:
-# keyboard = Controller()
-# keyboard.press(Key.enter)
-# keyboard.release(Key.enter)
+if __name__ != "__main__": from .Use import Use
+else: from Use import Use
 
-
-class UseKeyboard(Use.Use):
+class UseKeyboard(Use):
     def __init__(self,timing: str="random", variance: float=.25):
         """
             TIMING
