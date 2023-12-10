@@ -1,5 +1,5 @@
 from pynput.mouse import Listener
-import time, Track
+import time, .Track
 
 class TrackMouse(Track.Track):
 
