@@ -3,7 +3,7 @@ import time
 if __name__ != "__main__": from .Track import Track as tk
 else: from Track import Track as tk
 
-class TrackMouse(Track.Track):
+class TrackMouse(tk):
 
     def on_move(self, x, y):
         self.write_record(self.on_move.__name__,x,y)
