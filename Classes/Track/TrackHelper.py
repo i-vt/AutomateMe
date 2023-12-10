@@ -1,9 +1,13 @@
-# Define a combination of classes & functionalities for an easier pull by OchestratorMain.py
-
-from .TrackKeyboard import TrackKeyboard as tk
-from .TrackMouse import TrackMouse as tm
-from .TrackScreen import TrackScreen as ts
 import threading
+
+if __name__ != "__main__":
+    from .TrackKeyboard import TrackKeyboard as tk
+    from .TrackMouse import TrackMouse as tm
+    from .TrackScreen import TrackScreen as ts
+else:
+    from TrackKeyboard import TrackKeyboard as tk
+    from TrackMouse import TrackMouse as tm
+    from TrackScreen import TrackScreen as ts
 
 class TrackHelper:
     
@@ -26,18 +30,5 @@ class TrackHelper:
         mouse_thread.start()
         keyboard_thread.start()
 
-        """
-        #keyboard = threading.Thread(target=tk().record())
-        screen  = threading.Thread(target=ts().record())
-        print(1)
-        screen.start()
-        print(2)
-        mouse.start()
-        print(3)
-        #keyboard.start()
-        screen.join()
-        mouse.join()
-        #keyboard.join()
-        """
 
 #TrackHelper().record()
