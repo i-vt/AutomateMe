@@ -1,4 +1,4 @@
-import os, Track, time
+import os, .Track, time
 from PIL import ImageGrab
 
 #Remove dependency if single screen?
@@ -10,7 +10,7 @@ class TrackScreen(Track.Track):
         for i, m in enumerate(get_monitors()):
             # The bounding box is defined by the geometry of the monitor
             bbox = (m.x, m.y, m.x + m.width, m.y + m.height)
-            print(f"Capturing screen {m.name} at bbox: {bbox}")
+            #print(f"Capturing screen {m.name} at bbox: {bbox}")
             screenshot = ImageGrab.grab(bbox=bbox)
             screenshot_path = os.path.join(folder_path, f'{naming}_{i + 1}_{self.now()}.png')
             screenshot.save(screenshot_path)
@@ -24,7 +24,7 @@ class TrackScreen(Track.Track):
         output_folder = self.make_local_folder_get_filepath(folder_name)
 
         while iterations != 0:
-            print(output_folder)
+            #print(output_folder)
             self.capture_screens(output_folder, file_naming)
             time.sleep(sleep_time)
             iterations -= 1
