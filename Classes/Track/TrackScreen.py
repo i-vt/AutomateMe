@@ -1,4 +1,4 @@
-import os, .Track, time
+import os, time
 from PIL import ImageGrab
 
 #Remove dependency if single screen?
