@@ -1,5 +1,7 @@
-import .Track
 from pynput.keyboard import Listener, Key
+
+if __name__ != "__main__": import .Track
+else: import Track
 
 class TrackKeyboard(Track.Track):
     # To do: add logic for key-press/release for tracking of combination of keys ex.: CTRL + C
