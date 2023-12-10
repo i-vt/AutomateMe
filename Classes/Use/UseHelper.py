@@ -3,9 +3,11 @@ import threading
 if __name__ != "__main__":
     from .UseKeyboard import UseKeyboard as uk
     from .UseMouse import UseMouse as um
+    from .UseSystem import UseSystem as us
 else:
     from UseKeyboard import UseKeyboard as uk
     from UseMouse import UseMouse as um
+    from UseSystem import UseSystem as us
 
 
 class UseHelper:
@@ -18,7 +20,9 @@ class UseHelper:
     def mouse(self):um().play_record(self.mouse_instruction_filepath)
     def keyboard(self):uk().play_record(self.keyboard_instruction_filepath)
 
-    def play_record(self, mouse_instruction_filepath: str="", keyboard_instruction_filepath: str=""):
+    def play_record(self, mouse_instruction_filepath: str="", 
+                    keyboard_instruction_filepath: str="",
+                    system_command: str=""):
         """
         mouse = "/home/computer/Documents/TrackMouse_20231209_233404_684467.txt"
         keyboard = "/home/computer/Documents/TrackKeyboard_20231209_233404_684467.txt"
@@ -37,3 +41,5 @@ class UseHelper:
             self.keyboard_instruction_filepath = keyboard_instruction_filepath
             keyboard_thread = threading.Thread(target=self.keyboard)
             keyboard_thread.start()
+
+        if system_command != "": us().execute_command(system_command)
