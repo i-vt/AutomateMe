@@ -1,9 +1,9 @@
 from pynput.keyboard import Listener, Key
 
-if __name__ != "__main__": import .Track
-else: import Track
+if __name__ != "__main__": from .Track import Track as tk
+else: from Track import Track as tk
 
-class TrackKeyboard(Track.Track):
+class TrackKeyboard(tk):
     # To do: add logic for key-press/release for tracking of combination of keys ex.: CTRL + C
     def on_keypress(self, key):
         # print(key)
