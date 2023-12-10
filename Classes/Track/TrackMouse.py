@@ -1,5 +1,7 @@
 from pynput.mouse import Listener
-import time, .Track
+import time
+if __name__ != "__main__": from .Track import Track as tk
+else: from Track import Track as tk
 
 class TrackMouse(Track.Track):
 
