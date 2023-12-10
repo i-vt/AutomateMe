@@ -3,8 +3,10 @@
 import threading, sys, os
 if __name__!="__main__":
     from .Track.TrackHelper import TrackHelper as th
+    from .Use.UseHelper import UseHelper as uh
 else:
     from Track.TrackHelper import TrackHelper as th
+    from Use.UseHelper import UseHelper as uh
 
 class OrchestratorAssistant:
     
@@ -18,12 +20,9 @@ class OrchestratorAssistant:
         th().record()
 
     def play(self, mouse, keyboard):
-        if mouse != "":
-            mouse_thread = threading.Thread(target=um.play_record(mouse))
-            mouse_thread.start()
-        if keyboard != "":
-            keyboard_thread = threading.thread(target=uk.play_record(keyboard))
-            keyboard_thread.start()
-        # A bit concerned about delay & file mismatch tbh
-
-#sOrchestratorAssistant().record()
+        """
+        m = "/home/computer/Downloads/Samples/TrackMouse_20231210_001637_845342.txt"
+        k = "/home/computer/Downloads/Samples/TrackKeyboard_20231210_001637_846024.txt"
+        OrchestratorAssistant().play(m,k)
+        """
+        uh().play_record(mouse,keyboard)
