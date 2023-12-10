@@ -1,7 +1,10 @@
-import time, Use
+import time
 from pynput.mouse import Button, Controller
 
-class UseMouse(Use.Use):
+if __name__ != "__main__": from .Use import Use
+else: from Use import Use
+
+class UseMouse(Use):
 
     def play_record(self, instruction_file: str="", delimiter: str="|") -> bool:
         """
