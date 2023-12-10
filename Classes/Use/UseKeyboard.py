@@ -1,10 +1,10 @@
 from pynput.keyboard import Controller, Key
 import time, random
 
-if __name__ != "__main__": from .Use import Use
-else: from Use import Use
+if __name__ != "__main__": from .Use import Use as u
+else: from Use import Use as u
 
-class UseKeyboard(Use):
+class UseKeyboard(u):
     def __init__(self,timing: str="random", variance: float=.25):
         """
             TIMING
