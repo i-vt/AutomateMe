@@ -1,4 +1,4 @@
-import Track
+import .Track
 from pynput.keyboard import Listener, Key
 
 class TrackKeyboard(Track.Track):
