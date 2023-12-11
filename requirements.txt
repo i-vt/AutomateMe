@@ -1,1 +1,15 @@
+# (Track/Use)(Mouse/Keyboard)
+pynput
 
+# TrackScreen
+Pillow
+# Mostly used for integrating multiple screens & probably can be removed later
+screeninfo
+
+# TrackSystem: Hardware
+psutil
+py-cpuinfo
+GPUtil
+
+# TrackSystem: Networking
+scapy
