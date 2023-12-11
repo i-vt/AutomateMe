@@ -92,3 +92,23 @@ ts.basic_sysinfo()
 ts.hardware()
 ts.network()
 """
+
+"""
+For future:
+import socket
+
+def get_ip_address():
+    try:
+        # Attempt to connect to an external host to determine the local IP
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))  # Google's DNS server
+        ip = s.getsockname()[0]
+        s.close()
+    except Exception as e:
+        ip = "Unable to get IP"
+    return ip
+
+# Example usage
+print(get_ip_address())
+
+"""
